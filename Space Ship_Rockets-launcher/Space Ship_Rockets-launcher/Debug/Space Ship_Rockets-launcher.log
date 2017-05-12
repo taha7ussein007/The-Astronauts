@@ -1,0 +1,29 @@
+﻿  SpaceShip.cpp
+  Rocket.cpp
+  main.cpp
+e:\fcih\level-2_2nd-term\algorithms\the astronauts\space ship_rockets-launcher\space ship_rockets-launcher\main.cpp(34): warning C4996: '_beep': This function or variable has been superceded by newer library or operating system functionality. Consider using Beep instead. See online help for details.
+          c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdlib.h(910) : see declaration of '_beep'
+e:\fcih\level-2_2nd-term\algorithms\the astronauts\space ship_rockets-launcher\space ship_rockets-launcher\main.cpp(35): warning C4996: '_beep': This function or variable has been superceded by newer library or operating system functionality. Consider using Beep instead. See online help for details.
+          c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdlib.h(910) : see declaration of '_beep'
+e:\fcih\level-2_2nd-term\algorithms\the astronauts\space ship_rockets-launcher\space ship_rockets-launcher\main.cpp(73): warning C4996: '_beep': This function or variable has been superceded by newer library or operating system functionality. Consider using Beep instead. See online help for details.
+          c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdlib.h(910) : see declaration of '_beep'
+e:\fcih\level-2_2nd-term\algorithms\the astronauts\space ship_rockets-launcher\space ship_rockets-launcher\main.cpp(87): warning C4996: '_beep': This function or variable has been superceded by newer library or operating system functionality. Consider using Beep instead. See online help for details.
+          c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdlib.h(910) : see declaration of '_beep'
+e:\fcih\level-2_2nd-term\algorithms\the astronauts\space ship_rockets-launcher\space ship_rockets-launcher\main.cpp(101): warning C4996: '_beep': This function or variable has been superceded by newer library or operating system functionality. Consider using Beep instead. See online help for details.
+          c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdlib.h(910) : see declaration of '_beep'
+e:\fcih\level-2_2nd-term\algorithms\the astronauts\space ship_rockets-launcher\space ship_rockets-launcher\main.cpp(114): warning C4996: '_beep': This function or variable has been superceded by newer library or operating system functionality. Consider using Beep instead. See online help for details.
+          c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdlib.h(910) : see declaration of '_beep'
+e:\fcih\level-2_2nd-term\algorithms\the astronauts\space ship_rockets-launcher\space ship_rockets-launcher\main.cpp(116): warning C4996: '_sleep': This function or variable has been superceded by newer library or operating system functionality. Consider using Sleep instead. See online help for details.
+          c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdlib.h(911) : see declaration of '_sleep'
+e:\fcih\level-2_2nd-term\algorithms\the astronauts\space ship_rockets-launcher\space ship_rockets-launcher\main.cpp(117): warning C4996: '_beep': This function or variable has been superceded by newer library or operating system functionality. Consider using Beep instead. See online help for details.
+          c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdlib.h(910) : see declaration of '_beep'
+e:\fcih\level-2_2nd-term\algorithms\the astronauts\space ship_rockets-launcher\space ship_rockets-launcher\main.cpp(138): warning C4996: '_beep': This function or variable has been superceded by newer library or operating system functionality. Consider using Beep instead. See online help for details.
+          c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdlib.h(910) : see declaration of '_beep'
+e:\fcih\level-2_2nd-term\algorithms\the astronauts\space ship_rockets-launcher\space ship_rockets-launcher\main.cpp(139): warning C4996: '_beep': This function or variable has been superceded by newer library or operating system functionality. Consider using Beep instead. See online help for details.
+          c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdlib.h(910) : see declaration of '_beep'
+e:\fcih\level-2_2nd-term\algorithms\the astronauts\space ship_rockets-launcher\space ship_rockets-launcher\main.cpp(143): warning C4996: '_beep': This function or variable has been superceded by newer library or operating system functionality. Consider using Beep instead. See online help for details.
+          c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdlib.h(910) : see declaration of '_beep'
+e:\fcih\level-2_2nd-term\algorithms\the astronauts\space ship_rockets-launcher\space ship_rockets-launcher\main.cpp(151): warning C4996: '_sleep': This function or variable has been superceded by newer library or operating system functionality. Consider using Sleep instead. See online help for details.
+          c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdlib.h(911) : see declaration of '_sleep'
+  Generating Code...
+  Space Ship_Rockets-launcher.vcxproj -> E:\FCIH\Level-2_2nd-term\Algorithms\The Astronauts\Space Ship_Rockets-launcher\Debug\Space Ship_Rockets-launcher.exe

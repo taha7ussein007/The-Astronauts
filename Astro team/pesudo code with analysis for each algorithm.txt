@@ -1,0 +1,337 @@
+﻿Quik sort 
+=========
+| pseudo code |
+---------------
+Quicksort(A : stack of sortable items, low as int, high as int){
+    if (low < high){
+        pivot_location = Partition(A,low,high)
+        Quicksort(A,low, pivot_location - 1)
+        Quicksort(A, pivot_location + 1, high)
+    }
+}
+Partition(A : stack of sortable items, low as int, high as int){
+     pivot = A[low]
+     leftwall = low
+
+     for i = low + 1 to high{
+         if (A[i] < pivot) then{
+             leftwall = leftwall + 1
+             swap(A[i], A[leftwall])
+         }
+     }
+     swap(A[low],A[leftwall])
+
+    return (leftwall)}
+	
+	########################################3
+	| Analysis |
+	------------
+	 T(n) = T(k) + T(n-k-1) + \Theta(n) 
+	 
+  * Worst Case: The worst case occurs when the partition process always picks greatest or smallest element as pivot. If we consider above partition strategy where last element is always picked as pivot, the worst case would occur when the array is already sorted in increasing or decreasing order. Following is recurrence for worst case.
+
+ T(n) = T(0) + T(n-1) + \theta(n)
+which is equivalent to  
+ T(n) = T(n-1) + \theta(n)
+ 
+ * Best Case: The best case occurs when the partition process always picks the middle element as pivot. Following is recurrence for best case.
+
+ T(n) = 2T(n/2) + \theta(n)
+ 
+ *Average Case:
+To do average case analysis, we need to consider all possible permutation of array and calculate time taken by every permutation which doesn’t look easy.
+We can get an idea of average case by considering the case when partition puts O(n/9) elements in one set and O(9n/10) elements in other set. Following is recurrence for this case.
+
+ T(n) = T(n/9) + T(9n/10) + \theta(n)
+Solution of above recurrence is also O(nLogn)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Heap sort 
+==========
+
+* code :
+-------
+ 
+void heapsort(int arr[], unsigned int N)  
+{  
+    unsigned int n = N, i = n/2, parent, child;  
+    int t;  
+  
+    for (;;) { /* Loops until arr is sorted */  
+        if (i > 0) { /* First stage - Sorting the heap */  
+            i--;           /* Save its index to i */  
+            t = arr[i];    /* Save parent value to t */  
+        } else {     /* Second stage - Extracting elements in-place */  
+            n--;           /* Make the new heap smaller */  
+            if (n == 0) return; /* When the heap is empty, we are done */  
+            t = arr[n];    /* Save last value (it will be overwritten) */  
+            arr[n] = arr[0]; /* Save largest value at the end of arr */  
+        }  
+  
+        parent = i; /* We will start pushing down t from parent */  
+        child = i*2 + 1; /* parent's left child */  
+  
+        /* Sift operation - pushing the value of t down the heap */  
+        while (child < n) {  
+            if (child + 1 < n  &&  arr[child + 1] > arr[child]) {  
+                child++; /* Choose the largest child */  
+            }  
+            if (arr[child] > t) { /* If any child is bigger than the parent */  
+                arr[parent] = arr[child]; /* Move the largest child up */  
+                parent = child; /* Move parent pointer to this child */  
+                //child = parent*2-1; /* Find the next child */  
+                child = parent*2+1; /* the previous line is wrong*/  
+            } else {  
+                break; /* t's place is found */  
+            }  
+        }  
+        arr[parent] = t; /* We save t in the heap */  
+    }  
+}  
+
+################################
+
+* pseudo code :
+---------------
+
+ function heapSort(a : stack of sortable items, count) {
+     var int start := count ÷ 2 - 1,
+           end := count - 1
+
+     while start ≥ 0
+         sift(a, start, count)
+         start := start - 1
+
+     while end > 0
+         swap(a[end], a[0])
+         sift(a, 0, end)
+         end := end - 1
+ }
+ 
+ function sift(a : stack of sortable items, start, count) {
+     var int root := start, child
+
+     while root * 2 + 1 < count {
+         child := root * 2 + 1
+         if child < count - 1 and a[child] < a[child + 1]
+             child := child + 1
+         if a[root] < a[child]
+             swap(a[root], a[child])
+             root := child
+         else
+             return
+     }
+ }
+
+ ###################################
+ 
+ * Analysis :
+ ------------
+ 
+ Analysis of Heapsort
+
+Question 6.7.2 - Remember our initial mistake on thinking Build_Max_Heap was O(n lg n) by assuming a tree of height lg n for each of the n applications of Max_Heapify - are we making the same mistake again?
+
+Build_Max_Heap operates from the bottom-up, most nodes near bottom, so much of Max-Heapify time spent traversing low height trees.
+
+Heapsort operates from top-down for every Max-Heapify execution so possible to traverse entire tree height each iteration.
+
+Consider the running time of each line in the Heapsort algorithm.
+
+Recall that Build_Max_Heap (section 6.3)
+
+T(n)Build_Max_Heap = O(n)
+
+1. Build_Max_Heap must visit at least  ⌊n/2⌋  nodes, running Max_Heapify at each node. O(n).
+
+2. O(1), repeated n times, so O(n).
+
+3. O(1), repeated n − 1 times, so O(n).
+
+4. O(1), repeated n − 1 times, so O(n).
+
+5. Running time equal to the running time of Max_Heapify, repeated n−1 times.
+
+Recall that we have already derived that for Max_Heapify (section 6.2 of the text)
+
+T(n)Max_Heapify = Θ(lg n)
+
+Since the running time of Max_Heapify is Θ(lg n), the overall running time for Heapsort is:
+
+T(n)Heapsort	=	T(n)Build_Max_Heap + (n-1)T(n)Max_Heapify
+ 	=	O(n) + (n-1) Θ(lg n) 
+ 	=	O(n) + Θ(n lg n)
+ 	=	Θ(n lg n)
+	
+		
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+Insertion sort 
+==============
+
+* pseudo code 
+-------------
+
+Pseudocode
+
+
+    FOR j ← 2 TO length[A] 
+            DO  key ← A[j]    
+                   {Put A[j] into the sorted sequence A[1 . . j − 1]}   
+                    i ← j − 1    
+                    WHILE i > 0 and A[i] > key
+                               DO A[i +1] ← A[i]            
+                                       i ← i − 1     
+                     A[i + 1] ← key
+					 
+					 
+	####################################
+	
+	Analysis
+
+Since the running time of an algorithm on a particular input is the number of steps executed, we must define "step" independent of machine. We say that a statement that takes ci steps to execute and executed n times contributes cin to the total running time of the algorithm. To compute the running time, T(n), we sum the products of the cost and times column [see CLRS page 26]. That is, the running time of the algorithm is the sum of running times for each statement executed. So, we have
+
+T(n) = c1n + c2 (n − 1) + 0 (n − 1) + c4 (n − 1) + c5 ∑2 ≤ j ≤ n ( tj )+ c6 ∑2 ≤ j ≤ n (tj − 1) + c7 ∑2 ≤ j ≤ n (tj − 1) + c8 (n − 1)                               
+
+In the above equation we supposed that tj  be the number of times the while-loop (in line 5) is executed for that value of j. Note that the value of j runs from 2 to (n − 1). We have
+
+T(n) = c1n + c2 (n − 1) + c4 (n − 1) + c5 ∑2 ≤ j ≤ n ( tj )+ c6 ∑2 ≤ j ≤ n (tj  − 1) + c7 ∑2 ≤ j ≤ n (tj  − 1) + c8 (n − 1)  Equation (1)
+
+ 
+
+Best-Case
+
+The best case occurs if the array is already sorted. For each j = 2, 3, ..., n, we find that A[i] less than or equal to the key when i has its initial value of (j − 1). In other words, when i = j −1, always find the key A[i] upon the first time the WHILE loop is run.
+
+Therefore, tj = 1 for j = 2, 3, ..., n and the best-case running time can be computed using equation (1) as follows:
+
+T(n) = c1n + c2 (n − 1) + c4 (n − 1) + c5 ∑2 ≤ j ≤ n (1) + c6 ∑2 ≤ j ≤ n (1 − 1) + c7 ∑2 ≤ j ≤ n (1 − 1) + c8 (n − 1)
+
+T(n) = c1n + c2 (n − 1) + c4 (n − 1) + c5 (n − 1) + c8 (n − 1)
+
+T(n) = (c1 + c2 + c4  + c5  + c8 ) n + (c2  + c4  + c5  + c8)
+
+This running time can be expressed as an + b for constants a and b that depend on the statement costs ci. Therefore, T(n) it is a linear function of n.
+
+The punch line here is that the while-loop in line 5 executed only once for each j. This happens if given array A is already sorted.
+
+T(n) = an + b = O(n)
+It is a linear function of n.
+
+ 
+
+Worst-Case
+
+The worst-case occurs if the array is sorted in reverse order i.e., in decreasing order. In the reverse order, we always find that A[i] is greater than the key in the while-loop test. So, we must compare each element A[j] with each element in the entire sorted subarray A[1 .. j − 1] and so tj = j for j = 2, 3, ..., n. Equivalently, we can say that since the while-loop exits because i reaches to 0, there is one additional test after (j − 1) tests. Therefore, tj = j for j = 2, 3, ..., n and the worst-case running time can be computed using equation (1) as follows:
+
+T(n) = c1n + c2 (n − 1) + c4  (n − 1) + c5 ∑2 ≤ j ≤ n ( j ) + c6 ∑2 ≤ j ≤ n(j − 1) + c7 ∑2 ≤ j ≤ n(j − 1) + c8 (n − 1)
+
+And using the summations in CLRS on page 27, we have
+
+T(n) = c1n + c2 (n − 1) + c4  (n − 1) + c5 ∑2 ≤ j ≤ n [n(n +1)/2 + 1] + c6 ∑2 ≤ j ≤ n [n(n − 1)/2] + c7 ∑2 ≤ j ≤ n [n(n − 1)/2] + c8 (n − 1)
+
+T(n) = (c5/2 + c6/2 + c7/2) n2 + (c1 + c2 + c4 + c5/2 − c6/2 − c7/2 + c8) n − (c2 + c4 + c5 + c8)
+
+This running time can be expressed as (an2 + bn + c) for constants a, b, and c that again depend on the statement costs ci. Therefore, T(n) is a quadratic function of n.
+
+Here the punch line is that the worst-case occurs, when line 5 executed j times for each j. This can happens if array A starts out in reverse order
+
+T(n) = an2 + bn + c = O(n2)
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Merge sort  
+==========
+
+* pseudo code :
+----------------
+
+function merge_sort(list m)
+    // Base case. A list of zero or one elements is sorted, by definition.
+    if length(m) <= 1
+        return m
+
+    // Recursive case. First, *divide* the list into equal-sized sublists.
+    var list left, right
+    var integer middle = length(m) / 2
+    for each x in m before middle
+         add x to left
+    for each x in m after or equal middle
+         add x to right
+
+    // Recursively sort both sublists
+    left = merge_sort(left)
+    right = merge_sort(right)
+    
+    // Then merge the now-sorted sublists.
+    return merge(left, right)
+
+function merge(left, right)
+    var list result
+    while notempty(left) and notempty(right)
+        if first(left) <= first(right)
+            append first(left) to result
+            left = rest(left)
+        else
+            append first(right) to result
+            right = rest(right)
+    // either left or right may have elements left
+    while notempty(left)
+        append first(left) to result
+        left = rest(left)
+    while notempty(right)
+        append first(right) to result
+        right = rest(right)
+    return result
+	
+	
+	##################################
+	
+	* Analysis :
+	----------
+	
+	ALGORITHM Mergesort(A : stack of sortable items, p, r )
+IF p < r THENq = FLOOR[(p + r)/2]
+MERGE_Sort (A, p, q) T(n/2)
+MERGE_Sort (A, q + 1, r) T(n/2)
+MERGE (A, p, q, r) θ(n)
+T(n) = 2T(n/2) + θ(n)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+selection sort 
+==============
+
+* pesudo code :
+---------------
+
+SELECTION-SORT(A : stack of sortable items)
+	    for j ← 1 to n-1
+	         smallest ← j
+         	 for i ← j + 1 to n
+	                  if A[ i ] < A[ smallest ]
+                        smallest ← i
+         	  Exchange A[ j ] ↔ A[ smallest ]
+
+#####################################################
+
+Analysis :
+----------
+
+Best : O(N)
+worst : O(N^2)
+Average : O(N^2)
+
