@@ -20,3 +20,9 @@ Durations of each rocket: s1 = 1, s2 = 2
 Output
 The optimal order to fire the rockets to maximize the total distance traveled: r1, r2
 Total distance traveled: : [ 1/2 · 2 · 1 2 ] +[2 · 1 · 2+ 1/2 · 3 · 2 2 ] = 11 meters.
+---------------------
+Team Members : 
+- Taha Hussein 
+- Mahmoud Hamed @MEKKYUA
+- Abd el rahman Mahmoud
+- Ahmed gamal
