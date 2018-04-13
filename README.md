@@ -1,4 +1,4 @@
--Rockets : - 
+# Rockets : - 
 You’re leading an exploration of space, and it is your job to design a spaceship that
 will go as far as possible. To do this, you have n available rockets. The ith rocket is
 capable of accelerating the ship by a rate of ai meters per second squared and can do
